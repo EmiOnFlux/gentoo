@@ -66,3 +66,9 @@ src_configure() {
 	)
 	meson_src_configure
 }
+
+src_install () {
+	meson_src_install
+	# remove redundant sysusers file, #973676
+	rm "${ED}"/usr/lib/sysusers.d/geoclue-sysusers.conf || die
+}
